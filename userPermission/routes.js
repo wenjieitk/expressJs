@@ -5,7 +5,7 @@ const { canViewProject, scopedProjects } = require('./permission')
 const { authUser } = require('./auth')
 
 
-router.get('/', (req, res) => {
+router.get('/', authUser, (req, res) => {
   res.json(scopedProjects(req.user, projects))
 })
 
